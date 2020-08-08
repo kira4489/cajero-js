@@ -1,9 +1,9 @@
 console.log("Hello my banking app");
 // DECLARACIÓN DE VARIABLES
-let nombreUsuario = "John Flórez";
+let nombreUsuario = "Jhonatan Quirama Pino";
 let saldoEnCuenta = 5000;
 let limiteExtraccion = 500;
-let claveCorrecta = 1234;
+let claveCorrecta = 12345;
 //console.log("clave correcta " + typeof claveCorrecta);
 // SE DEFINE LA FUNCIÓN PARA INICIAR SESIÓN
 function iniciarSesion() {
@@ -27,7 +27,7 @@ function iniciarSesion() {
 }
 //Función para poder cargar el nombre en pantalla
 function cargarNombreEnPantalla() {
-  document.getElementById("nombre").innerHTML = "Hello hello " + nombreUsuario;
+  document.getElementById("nombre").innerHTML = "Hello" + nombreUsuario;
 }
 
 //actualizar saldo en pantalla
@@ -39,6 +39,7 @@ function actualizarSaldoEnPantalla() {
 const actualizarLimiteEnPantalla = () => {
   document.getElementById("limite-extraccion").innerHTML =
     "Tu límite de estraccion es: $ " + limiteExtraccion;
+    
 };
 
 //INVOCAR LA FUNCIÓN INICIAR SESIÓN
@@ -85,22 +86,22 @@ function depositarServicio(tipoDeServicio, nombreServicio) {
     `Has pagado ${tipoDeServicio} del servicio ${nombreServicio} y tu nuevo saldo es ${saldoEnCuenta}`
   );
 }
-rvicios[0]);
-      break;
-    case "2":
-      depositarServicio(telefono, misServicios[1]);
-      break;
-    case "3":
-      depositarServicio(luz, misServicios[2]);
-      break;
-    case "4":
-      depositarServicio(internet, misServicios[3]);
-      break;
-    default:
-      alert("No hay opción valida");
-      break;
-  }
-};
+// switch(servicio){
+//       break;
+//     case "2":
+//       depositarServicio(telefono, misServicios[1]);
+//       break;
+//     case "3":
+//       depositarServicio(luz, misServicios[2]);
+//       break;
+//     case "4":
+//       depositarServicio(internet, misServicios[3]);
+//       break;
+//     default:
+//       alert("No hay opción valida");
+//       break;
+//   }
+// };
 
 function depositarServicio(tipoDeServicio, nombreServicio) {
   saldoEnCuenta -= tipoDeServicio;
@@ -120,11 +121,15 @@ function extraerDinero() {
   } else if (dineroAExtraer > limiteExtraccion) {
     alert("No puede exceder el limite de extraccion");
   } else if (dineroAExtraer < saldoEnCuenta) {
-    saldoEnCuenta = saldoEnCuenta - dineroAExtraer;
+    saldoEnCuenta -= dineroAExtraer;
     alert("su saldo se actualizo");
     actualizarSaldoEnPantalla();
-  } else {
-    alert("Error,Digite un valor correcto");
+  }else if(saldoEnCuenta >= 0){
+    alert("no se puede ingresar letras")
+// }else {
+//     alert("Error,Digite un valor correcto");
+  }else if(dineroAExtraer > 0){
+    alert("no se pueden numeros negativos")
   }
 }
 
@@ -133,7 +138,7 @@ function depositarDinero() {
 
   if (isNaN(cantidad)) {
     return alert("Ingrese numeritooos no retiramos letras");
-  } else if (cantidad <= 0) {
+  } else if (cantidad <=0) {
     return alert("Ups! si hago esto te robo platica");
   }
   //saldoEnCuenta = saldoEnCuenta + cantidad
@@ -143,11 +148,17 @@ function depositarDinero() {
 }
 
 function cambiarLimiteDeExtraccion() {
-  var nuevoLimite = parseInt(prompt("Ingrese su nuevo límite de estrasion"), 0);
+  var nuevoLimite = parseInt(prompt("Ingrese su nuevo límite de extraccion"), 0);
+  if(isNaN(nuevoLimite)){
+    return alert("No se puede ingresar letras solo numero");
+  }else if (nuevoLimite < 0){
+ return alert("no se puede ingresar numeros negativos");
+}
   limiteExtraccion = nuevoLimite;
   actualizarLimiteEnPantalla();
   alert(
-    "Pum pum!! Se ha actualizado tu límite de extracción, nuevo valor " +
+    "Se ha actualizado tu límite de extracción, nuevo valor " +
       limiteExtraccion
   );
 }
+
