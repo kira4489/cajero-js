@@ -123,12 +123,12 @@ function extraerDinero() {
     saldoEnCuenta -= dineroAExtraer;
     alert("su saldo se actualizo");
     actualizarSaldoEnPantalla();
-  } else if (saldoEnCuenta >= 0) {
+  } else if (s >= 0) {
     alert("no se puede ingresar letras");
-    // }else {
-    //     alert("Error,Digite un valor correcto");
   } else if (dineroAExtraer > 0) {
     alert("no se pueden numeros negativos");
+  }else{
+    alert("erorr,digite un valor correcto")
   }
 }
 
