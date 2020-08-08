@@ -39,7 +39,6 @@ function actualizarSaldoEnPantalla() {
 const actualizarLimiteEnPantalla = () => {
   document.getElementById("limite-extraccion").innerHTML =
     "Tu límite de estraccion es: $ " + limiteExtraccion;
-    
 };
 
 //INVOCAR LA FUNCIÓN INICIAR SESIÓN
@@ -124,12 +123,12 @@ function extraerDinero() {
     saldoEnCuenta -= dineroAExtraer;
     alert("su saldo se actualizo");
     actualizarSaldoEnPantalla();
-  }else if(saldoEnCuenta >= 0){
-    alert("no se puede ingresar letras")
-// }else {
-//     alert("Error,Digite un valor correcto");
-  }else if(dineroAExtraer > 0){
-    alert("no se pueden numeros negativos")
+  } else if (saldoEnCuenta >= 0) {
+    alert("no se puede ingresar letras");
+    // }else {
+    //     alert("Error,Digite un valor correcto");
+  } else if (dineroAExtraer > 0) {
+    alert("no se pueden numeros negativos");
   }
 }
 
@@ -138,7 +137,7 @@ function depositarDinero() {
 
   if (isNaN(cantidad)) {
     return alert("Ingrese numeritooos no retiramos letras");
-  } else if (cantidad <=0) {
+  } else if (cantidad <= 0) {
     return alert("Ups! si hago esto te robo platica");
   }
   //saldoEnCuenta = saldoEnCuenta + cantidad
@@ -148,17 +147,24 @@ function depositarDinero() {
 }
 
 function cambiarLimiteDeExtraccion() {
-  var nuevoLimite = parseInt(prompt("Ingrese su nuevo límite de extraccion"), 0);
-  if(isNaN(nuevoLimite)){
+  var nuevoLimite = parseInt(
+    prompt("Ingrese su nuevo límite de extraccion"),
+    0
+  );
+  if (isNaN(nuevoLimite)) {
     return alert("No se puede ingresar letras solo numero");
-  }else if (nuevoLimite < 0){
- return alert("no se puede ingresar numeros negativos");
-}
+  } else if (nuevoLimite < 0) {
+    return alert("no se puede ingresar numeros negativos");
+  } else if (nuevoLimite > 0) {
+    alert("su limite se actulizado");
+    actualizarLimiteEnPantalla();
+  } else {
+    nuevoLimite = 0;
+    return alert("ingrese su numero limite de extraccion");
+  }
   limiteExtraccion = nuevoLimite;
   actualizarLimiteEnPantalla();
   alert(
-    "Se ha actualizado tu límite de extracción, nuevo valor " +
-      limiteExtraccion
+    "Se ha actualizado tu límite de extracción, nuevo valor " + limiteExtraccion
   );
 }
-
